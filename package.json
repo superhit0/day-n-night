@@ -1,0 +1,22 @@
+{
+  "name": "day-n-night",
+  "version": "1.0.0",
+  "description": "An electron app to show day & night left of the day",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superhit0/day-n-night.git"
+  },
+  "keywords": [
+    "productivity"
+  ],
+  "author": "Abhimanyu Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superhit0/day-n-night/issues"
+  },
+  "homepage": "https://github.com/superhit0/day-n-night#readme"
+}

@@ -1,10 +1,10 @@
 const electron = require('electron');
 const path = require('path');
+const url = require('url');
 
-const { app, BrowserWindow, Tray, nativeImage: NativeImage, systemPreferences } = electron;
+const { app, BrowserWindow, systemPreferences } = electron;
 
 let mainWindow;
-let mainTray;
 
 const createMainWindow = () => {
   mainWindow = new BrowserWindow({
@@ -12,18 +12,17 @@ const createMainWindow = () => {
     height: 450,
     titleBarStyle: 'hidden',
     skipTaskbar: true,
-    resizable: false
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
   mainWindow.setWindowButtonVisibility(false);
-};
-
-const createMainTray = () => {
-  // const nativeImage = NativeImage.createFromBuffer(new Buffer('HELLO'));
-  if(systemPreferences.isDarkMode()) {
-    mainTray = new Tray(path.join(process.cwd() + '/assets/spinner_dark.png'));
-  } else {
-    mainTray = new Tray(path.join(process.cwd() + '/assets/spinner_light.png'));
-  }
+  mainWindow.loadURL(url.format({
+    protocol: 'file',
+    slashes: true,
+    pathname: path.join(process.cwd(), '/src/index.html')
+  }));
 };
 
 const updateMyAppTheme = ( isDarkMode ) => {
@@ -32,7 +31,6 @@ const updateMyAppTheme = ( isDarkMode ) => {
 
 app.on('ready', () => {
   createMainWindow();
-  createMainTray();
 });
 
 systemPreferences.subscribeNotification(

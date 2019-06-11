@@ -14,7 +14,8 @@ const createMainWindow = () => {
     skipTaskbar: true,
     resizable: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      devTools: false
     }
   });
   mainWindow.setWindowButtonVisibility(false);

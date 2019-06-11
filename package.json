@@ -2,7 +2,7 @@
   "name": "day-n-night",
   "version": "1.0.0",
   "description": "An electron app to show day & night left of the day",
-  "main": "index.js",
+  "main": "src/main/index.js",
   "scripts": {
     "start": "electron .",
     "dev": "electron-webpack dev",
@@ -33,10 +33,15 @@
   },
   "electronWebpack": {
     "main": {
-      "sourceDirectory": "./"
+      "webpackConfig": "webpack.server.config.js"
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "electron": "^5.0.3",
     "electron-builder": "^20.43.0",
     "electron-webpack": "^2.6.2",

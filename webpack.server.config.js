@@ -1,4 +1,7 @@
+const mode = process.env.NODE_ENV !== 'production' ? 'development' : 'production';
+
 module.exports = {
+  mode,
   module: {
     rules: [
       {

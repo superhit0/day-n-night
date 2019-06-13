@@ -49,8 +49,9 @@ const setMainTray = (event, canvasUrl) => {
   }
 };
 
-const updateMyAppTheme = ( isDarkMode ) => {
-
+const updateMyAppTheme = () => {
+  const isDarkMode = systemPreferences.isDarkMode();
+  mainWindow.webContents.send('tray-data', '88', isDarkMode);
 };
 
 app.on('ready', () => {
@@ -64,8 +65,6 @@ ipcMain.on('tray-image', setMainTray);
 
 systemPreferences.subscribeNotification(
   'AppleInterfaceThemeChangedNotification',
-  () => {
-    updateMyAppTheme(systemPreferences.isDarkMode())
-  }
+  updateMyAppTheme
 )
 

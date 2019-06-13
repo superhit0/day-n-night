@@ -1,4 +1,4 @@
-import { app, systemPreferences, ipcMain, Tray, nativeImage } from 'electron';
+import { app, systemPreferences, ipcMain } from 'electron';
 import { createMainWindow, setMainTray } from './components';
 
 let mainWindow;

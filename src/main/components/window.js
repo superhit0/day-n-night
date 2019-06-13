@@ -4,22 +4,17 @@ import path from 'path';
 
 let mainWindow;
 
-const windowBounds = {
-  width: 350,
-  height: 450
-};
-
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const wdsPort = isDevelopment && process.env.ELECTRON_WEBPACK_WDS_PORT;
 
-export const createMainWindow = () => {
+export const createMainWindow = ({width, height}) => {
   mainWindow = new BrowserWindow({
-    width: windowBounds.width,
-    height: windowBounds.height,
+    width,
+    height,
     titleBarStyle: 'hidden',
     skipTaskbar: true,
     resizable: false,
-    show: true,
+    show: false,
     webPreferences: {
       nodeIntegration: true
     }

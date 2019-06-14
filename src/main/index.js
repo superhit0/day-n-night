@@ -3,6 +3,7 @@ import { createMainWindow, setMainTray } from './components';
 
 let mainWindow;
 let mainTray;
+let timeUpdater;
 
 const windowBounds = {
   width: 350,
@@ -66,7 +67,12 @@ const toggleMainWindowVisiblibity = (event, bounds) => {
 
 app.on('ready', () => {
   mainWindow = createMainWindow(windowBounds);
-  ipcMain.on('page-load', updateMyAppTheme);
+  ipcMain.on('page-load', () => {
+    updateMyAppTheme();
+    if (timeUpdater) {
+      timeUpdater = setInterval(updateMyAppTheme, 60 * 1000);
+    }
+  });
 });
 
 ipcMain.on('tray-image', (event, canvasUrl) => {

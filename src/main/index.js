@@ -8,8 +8,8 @@ let timeUpdater;
 let boundType = 'day';
 
 const windowBounds = {
-  width: 350,
-  height: 450
+  width: 250,
+  height: 300
 };
 
 const updateMyAppTheme = () => {

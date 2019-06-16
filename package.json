@@ -52,5 +52,9 @@
     "electron-webpack": "^2.6.2",
     "sass-loader": "^7.1.0",
     "webpack": "^4.33.0"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }

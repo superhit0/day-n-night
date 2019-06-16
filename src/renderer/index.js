@@ -8,3 +8,5 @@ window.onload = () => {
 ipcRenderer.on('tray-data', (event, data, darkMode) => {
   ipcRenderer.send('tray-image', trayCanvas(data, darkMode));
 });
+
+import './app';

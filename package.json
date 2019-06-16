@@ -34,17 +34,23 @@
   "electronWebpack": {
     "main": {
       "webpackConfig": "webpack.server.config.js"
+    },
+    "renderer": {
+      "webpackConfig": "webpack.client.config.js"
     }
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "css-loader": "^3.0.0",
     "electron": "^5.0.3",
     "electron-builder": "^20.43.0",
     "electron-webpack": "^2.6.2",
+    "sass-loader": "^7.1.0",
     "webpack": "^4.33.0"
   }
 }

@@ -1,4 +1,4 @@
-module.exports = (text, darkMode = false) => {
+export default function(text, darkMode = false) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   canvas.width = 21;

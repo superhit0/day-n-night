@@ -1,5 +1,5 @@
-const { ipcRenderer } = require('electron');
-const trayCanvas = require('./utils/traycanvas');
+import { ipcRenderer } from 'electron';
+import trayCanvas from './utils/traycanvas';
 
 window.onload = () => {
   ipcRenderer.send('page-load');

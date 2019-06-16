@@ -5,6 +5,7 @@ import { getTimeSpent } from './utils';
 let mainWindow;
 let mainTray;
 let timeUpdater;
+let boundType = 'day';
 
 const windowBounds = {
   width: 350,
@@ -14,7 +15,7 @@ const windowBounds = {
 const updateMyAppTheme = () => {
   const isDarkMode = systemPreferences.isDarkMode();
   const currentTime = new Date();
-  mainWindow.webContents.send('tray-data', getTimeSpent(currentTime), isDarkMode);
+  mainWindow.webContents.send('tray-data', getTimeSpent(currentTime, boundType), isDarkMode);
 };
 
 const toggleMainWindowVisiblibity = (event, bounds) => {

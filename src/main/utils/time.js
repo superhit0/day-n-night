@@ -35,8 +35,8 @@ const getTimeBounds = (type, date) => {
   }
 };
 
-export const getTimeSpent = (currentTime) => {
-  const timeBounds = getTimeBounds('day', currentTime);
+export const getTimeSpent = (currentTime, boundType = 'day') => {
+  const timeBounds = getTimeBounds(boundType, currentTime);
   const timeSpent = Math.round((currentTime.getTime() - timeBounds.min) * 100 / (timeBounds.max - timeBounds.min));
   return timeSpent > 100 ? '\u221E' : timeSpent;
 };

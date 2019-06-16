@@ -1,3 +1,4 @@
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const mode = process.env.NODE_ENV !== 'production' ? 'development' : 'production';
 
 module.exports = {
@@ -45,5 +46,12 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackTagsPlugin({
+      tags: [
+        'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+      ]
+    })
+  ]
 };

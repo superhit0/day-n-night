@@ -22,8 +22,8 @@ const toggleMainWindowVisiblibity = (event, bounds) => {
   if (mainWindow.isVisible()) {
     mainWindow.hide();
   } else {
-    const {x, y, width} = bounds;
-    mainWindow.setPosition(x - (windowBounds.width/2) + (width/2), y);
+    const {x, y, width, height} = bounds;
+    mainWindow.setPosition(x - (windowBounds.width/2) + (width/2), y + height);
     mainWindow.show();
   }
 };

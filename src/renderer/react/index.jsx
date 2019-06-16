@@ -1,5 +1,11 @@
 import React from 'react';
 
 export default function() {
-  return (<h1>Hello World</h1>);
+  return (
+    <div class="container text-warn">
+      <div class="alert alert-primary">
+        Hello World
+      </div>
+    </div>
+  );
 }

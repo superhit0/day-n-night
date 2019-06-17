@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Body from './components/Body';
 
 import './styles/utilities.scss';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function() {
   return (

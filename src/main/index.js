@@ -32,7 +32,7 @@ app.on('ready', () => {
   mainWindow = createMainWindow(windowBounds);
   ipcMain.on('page-load', () => {
     updateMyAppTheme();
-    if (timeUpdater) {
+    if (!timeUpdater) {
       timeUpdater = setInterval(updateMyAppTheme, 60 * 1000);
     }
   });

@@ -1,15 +1,23 @@
 import React from 'react';
 
-export default function({ height, width}) {
-  console.log(height, width)
-  const x=height/2;
-  const path = `
+export default function({ height, width, waveThin, fill, invert = false }) {
+  const x=height*fill/100;
+  const path = invert
+    ? `
     M0 ${x} 
     L0 ${height} 
     L${width} ${height} 
     L${width} ${x}
-    q-${width/4} ${height/8} -${width/2} 0 
-    q-${width/4} -${height/8} -${width/2} 0
+    q-${width/4} -${height/waveThin} -${width/2} 0
+    q-${width/4} ${height/waveThin} -${width/2} 0 
+    `
+    : `
+    M0 ${x} 
+    L0 ${height} 
+    L${width} ${height} 
+    L${width} ${x}
+    q-${width/4} ${height/waveThin} -${width/2} 0 
+    q-${width/4} -${height/waveThin} -${width/2} 0
     `;
   return (
     <svg className="h-100 w-100 rounded-circle">

@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.scss';
 
 export default function({ height, width, waveThin, fill, invert = false }) {
   const x=height*fill/100;
@@ -20,7 +21,7 @@ export default function({ height, width, waveThin, fill, invert = false }) {
     q-${width/4} -${height/waveThin} -${width/2} 0
     `;
   return (
-    <svg className="h-100 w-100 rounded-circle">
+    <svg className="fill-svg h-100 w-100 rounded-circle">
       <path id="box" d={path} stroke="none" strokeWidth="3" fill="blue" />
       Sorry, your browser does not support inline SVG.
     </svg>

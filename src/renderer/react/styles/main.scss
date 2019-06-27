@@ -2,4 +2,8 @@
 
 #app {
   background-image: linear-gradient($top-color, $bottom-color);
+
+  .dark {
+    background-image: linear-gradient($top-color-dark, $bottom-color-dark);
+  }
 }

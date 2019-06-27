@@ -1,4 +1,10 @@
+@import '../../styles/variables';
+
 .fill-svg {
   position: absolute;
-  opacity: 0.15;
+  opacity: $svg-opacity;
+
+  .dark {
+    opacity: $svg-opacity-dark;
+  }
 }

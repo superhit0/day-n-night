@@ -1,6 +1,10 @@
-@import '../../styles/main';
+@import '../../styles/variables';
 
 .svg-holder {
   position: relative;
   background: $circle-body-color;
+
+  .dark {
+    background: $circle-body-color-dark;
+  }
 }

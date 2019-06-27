@@ -22,7 +22,7 @@ export default function({ height, width, waveThin, fill, invert = false }) {
     `;
   return (
     <svg className="fill-svg h-100 w-100 rounded-circle">
-      <path id="box" d={path} stroke="none" strokeWidth="3" fill="blue" />
+      <path id="box" d={path} stroke="none" strokeWidth="3" fill="black" />
       Sorry, your browser does not support inline SVG.
     </svg>
   );

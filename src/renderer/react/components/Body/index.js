@@ -25,6 +25,9 @@ export default function() {
         <SVGComponent height={height} width={width} waveThin={8} fill={fill} />
         <SVGComponent height={height} width={width} waveThin={16} fill={fill} invert={true} />
         <TrayLabel text={100-fill} />
+        <div className="w-100 text-center text-white">
+          P E R C E N T
+        </div>
       </div>
     </div>
   );

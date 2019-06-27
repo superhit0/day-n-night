@@ -3,8 +3,8 @@
 .svg-holder {
   position: relative;
   background: $circle-body-color;
+}
 
-  .dark {
-    background: $circle-body-color-dark;
-  }
+.svg-holder.dark {
+  background: $circle-body-color-dark;
 }

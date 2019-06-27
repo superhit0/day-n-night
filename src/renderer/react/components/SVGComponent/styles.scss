@@ -3,8 +3,8 @@
 .fill-svg {
   position: absolute;
   opacity: $svg-opacity;
+}
 
-  .dark {
-    opacity: $svg-opacity-dark;
-  }
+.fill-svg.dark {
+  opacity: $svg-opacity-dark;
 }

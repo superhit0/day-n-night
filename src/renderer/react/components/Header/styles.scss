@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.header {
+  .nav-link.active {
+    background: $header-active-color !important;
+    padding-top: 5px;
+    font-size: larger !important;
+  }
+
+  .nav-link.active.dark {
+    background: $header-active-color-dark !important;
+  }
+
+  .nav-link {
+    color: white !important;
+    opacity: 0.8;
+  }
+}

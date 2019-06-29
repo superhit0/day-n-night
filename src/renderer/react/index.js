@@ -13,14 +13,14 @@ export default function() {
   const [ theme, setTheme ] = useState('light');
   const [ fill, setFill ] = useState(0);
 
-  ipcRenderer.on('tray-data', (event, data, darkMode) => {
-    if(darkMode) {
+  ipcRenderer.on('tray-data', (event, { data, darkTheme }) => {
+    if(darkTheme) {
       document.getElementById('app').classList.add('dark');
     } else {
       document.getElementById('app').classList.remove('dark');
     }
 
-    setTheme(darkMode ? 'dark' : 'light');
+    setTheme(darkTheme ? 'dark' : 'light');
     setFill(Number(data) || data);
   });
 

@@ -15,7 +15,11 @@ const windowBounds = {
 const updateMyAppTheme = () => {
   const isDarkMode = systemPreferences.isDarkMode();
   const currentTime = new Date();
-  mainWindow.webContents.send('tray-data', getTimeSpent(currentTime, boundType), isDarkMode);
+  mainWindow.webContents.send('tray-data', {
+    data: getTimeSpent(currentTime, boundType),
+    darkMode: isDarkMode,
+    darkTheme: false
+  });
 };
 
 const toggleMainWindowVisiblibity = (event, bounds) => {

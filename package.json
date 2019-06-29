@@ -29,6 +29,9 @@
     "mac": {
       "target": "dmg",
       "darkModeSupport": "true"
+    },
+    "directories": {
+      "buildResources": "static"
     }
   },
   "electronWebpack": {},

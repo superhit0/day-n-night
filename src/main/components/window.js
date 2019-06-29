@@ -17,7 +17,8 @@ export const createMainWindow = ({width, height}) => {
     show: false,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    icon: __static + 'icon.png'
   });
   mainWindow.setWindowButtonVisibility(false);
   if (isDevelopment) {

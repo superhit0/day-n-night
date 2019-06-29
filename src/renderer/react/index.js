@@ -21,7 +21,7 @@ export default function() {
     }
 
     setTheme(darkMode ? 'dark' : 'light');
-    setFill(Number(data));
+    setFill(Number(data) || data);
   });
 
   return (

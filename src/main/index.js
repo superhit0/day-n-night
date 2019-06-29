@@ -1,6 +1,6 @@
 import { app, systemPreferences, ipcMain } from 'electron';
 import { createMainWindow, setMainTray } from './components';
-import { getTimeSpent } from './utils';
+import { getTimeSpent, isNightTime } from './utils';
 
 let mainWindow;
 let mainTray;
@@ -18,7 +18,7 @@ const updateMyAppTheme = () => {
   mainWindow.webContents.send('tray-data', {
     data: getTimeSpent(currentTime, boundType),
     darkMode: isDarkMode,
-    darkTheme: false
+    darkTheme: isNightTime(currentTime)
   });
 };
 

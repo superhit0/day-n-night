@@ -13,6 +13,10 @@ const timeBoundsMap = {
     max:[2,0,0,0,0,0]
   }
 };
+const dayBounds = {
+  min: 6,
+  max: 18
+};
 
 const getTimeBounds = (type, date) => {
   const { min, max } = timeBoundsMap[type] || timeBoundsMap['day'];
@@ -39,4 +43,11 @@ export const getTimeSpent = (currentTime, boundType = 'day') => {
   const timeBounds = getTimeBounds(boundType, currentTime);
   const timeSpent = Math.round((currentTime.getTime() - timeBounds.min) * 100 / (timeBounds.max - timeBounds.min));
   return timeSpent > 100 ? '\u221E' : timeSpent;
+};
+
+export const isNightTime = currentTime => {
+  const currentHour = currentTime.getHours();
+  const { min, max } = dayBounds;
+
+  return currentHour <= min || currentHour >= max;
 };

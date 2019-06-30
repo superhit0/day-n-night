@@ -1,16 +1,16 @@
 const dateMap = date => [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
 const timeBoundsMap = {
   month: {
-    min:[1,1,0,0,0,0],
-    max:[1,2,0,0,0,0]
+    min:[1,1,0.1,0,0,0],
+    max:[1,1.1,0.1,0,0,0]
   },
   day: {
     min:[1,1,1,0,0,0],
-    max:[1,1,2,0,0,0]
+    max:[1,1,1.1,0,0,0]
   },
   year: {
-    min:[1,0,0,0,0,0],
-    max:[2,0,0,0,0,0]
+    min:[1,0,0.1,0,0,0],
+    max:[1.1,0,0.1,0,0,0]
   }
 };
 const dayBounds = {
@@ -24,12 +24,8 @@ const getTimeBounds = (type, date) => {
 
   const [ minMap, maxMap ] = [ min, max ].map(it => (
     it.map((value, index) => {
-      let offset = 0;
-      if (value > 1) {
-        offset = 1;
-        value = 1;
-      }
-      return value * dateMapData[index] + offset;
+      const offset = (value - Math.floor(value) ) * 10;
+      return Math.floor(value) * dateMapData[index] + offset;
     })
   ));
 

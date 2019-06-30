@@ -1,6 +1,6 @@
 import { app, systemPreferences, ipcMain } from 'electron';
 import { createMainWindow, setMainTray } from './components';
-import { getTimeSpent, isNightTime } from './utils';
+import { getTimeSpent, isNightTime, allBounds } from './utils';
 
 let mainWindow;
 let mainTray;
@@ -18,7 +18,9 @@ const updateMyAppTheme = () => {
   mainWindow.webContents.send('tray-data', {
     data: getTimeSpent(currentTime, boundType),
     darkMode: isDarkMode,
-    darkTheme: isNightTime(currentTime)
+    darkTheme: isNightTime(currentTime),
+    allBounds,
+    boundType
   });
 };
 
@@ -44,6 +46,11 @@ app.on('ready', () => {
 
 ipcMain.on('tray-image', (event, canvasUrl) => {
   mainTray = setMainTray(canvasUrl, toggleMainWindowVisiblibity);
+});
+
+ipcMain.on('bound-change', (event, { boundType: newBoundType }) => {
+  boundType = newBoundType;
+  updateMyAppTheme();
 });
 
 systemPreferences.subscribeNotification(

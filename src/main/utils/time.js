@@ -1,12 +1,12 @@
 const dateMap = date => [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
 const timeBoundsMap = {
-  day: {
-    min:[1,1,1,0,0,0],
-    max:[1,1,2,0,0,0]
-  },
   month: {
     min:[1,1,0,0,0,0],
     max:[1,2,0,0,0,0]
+  },
+  day: {
+    min:[1,1,1,0,0,0],
+    max:[1,1,2,0,0,0]
   },
   year: {
     min:[1,0,0,0,0,0],
@@ -51,3 +51,5 @@ export const isNightTime = currentTime => {
 
   return currentHour <= min || currentHour >= max;
 };
+
+export const allBounds = Object.keys(timeBoundsMap);

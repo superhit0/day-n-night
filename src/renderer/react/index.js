@@ -30,9 +30,7 @@ export default function() {
 
   if (showSettingsPage) {
     return (
-      <div className="vh-100">
-        <SettingsPage setShowSettingsPage={setShowSettingsPage} />
-      </div>
+      <SettingsPage setShowSettingsPage={setShowSettingsPage} />
     );
   }
 

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Toggle from '../Toggle';
+import SettingsHeader from '../SettingsHeader';
 
 export default function({ setShowSettingsPage }) {
   return (
     <div className="container vh-100 bg-light">
-      <h1>Settings Page</h1>
+      <SettingsHeader setShowSettingsPage={setShowSettingsPage} />
+      <hr className="mt-1" />
       <Toggle/>
     </div>
   );

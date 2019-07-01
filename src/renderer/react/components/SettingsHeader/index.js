@@ -5,7 +5,7 @@ import './styles.scss';
 export default function({ setShowSettingsPage }) {
   return (
     <div className="pt-3">
-      <label className="h5">Settings</label>
+      <label className="h2">Settings</label>
       <i
         onClick={()=>{setShowSettingsPage(false)}}
         id="settingsclose"

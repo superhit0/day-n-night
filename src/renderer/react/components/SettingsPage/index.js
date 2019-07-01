@@ -13,12 +13,12 @@ export default function({ setShowSettingsPage }) {
       <SettingsHeader setShowSettingsPage={setShowSettingsPage} />
       <hr className="mt-1" />
       <div>
-        <label>Awake Mode</label>
+        <label className="h5">Awake Mode</label>
         <div className="float-right">
           <Toggle />
         </div>
       </div>
-      <div className="mt-2 mb-1">
+      <div className="h5 mt-2 mb-1">
         Awake Time
       </div>
       <div>

@@ -1,6 +1,6 @@
 import { app, systemPreferences, ipcMain } from 'electron';
 import { createMainWindow, setMainTray } from './components';
-import { getTimeSpent, isNightTime, allBounds } from './utils';
+import { getTimeSpent, isNightTime, allBounds, allBoundsAwake } from './utils';
 
 let mainWindow;
 let mainTray;
@@ -19,7 +19,7 @@ const updateMyAppTheme = () => {
     data: getTimeSpent(currentTime, boundType),
     darkMode: isDarkMode,
     darkTheme: isNightTime(currentTime),
-    allBounds,
+    allBounds: boundType === 'awake' ? allBoundsAwake : allBounds,
     boundType
   });
 };

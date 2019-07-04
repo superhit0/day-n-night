@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ToggleButton from "react-toggle-button";
 
-export default function({ onToggle = () =>{} }) {
-  const [ value, setValue ] = useState(false);
+export default function({ value = false, onToggle = () =>{} }) {
   return (
     <ToggleButton
       inactiveLabel={''}

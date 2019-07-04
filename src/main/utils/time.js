@@ -55,3 +55,5 @@ export const isNightTime = currentTime => {
 };
 
 export const allBounds = Object.keys(timeBoundsMap).filter( it => !invisibleBound.includes(it));
+
+export const allBoundsAwake = ['awake'];

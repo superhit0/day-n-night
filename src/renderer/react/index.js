@@ -30,7 +30,15 @@ export default function() {
 
   if (showSettingsPage) {
     return (
-      <SettingsPage setShowSettingsPage={setShowSettingsPage} />
+      <SettingsPage
+        setShowSettingsPage={setShowSettingsPage}
+        {
+          ...{
+            boundType,
+            setBoundType
+          }
+        }
+      />
     );
   }
 

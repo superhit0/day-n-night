@@ -11,8 +11,13 @@ const timeBoundsMap = {
   year: {
     min:[1,0,0.1,0,0,0],
     max:[1.1,0,0.1,0,0,0]
+  },
+  awake: {
+    min:[1,1,1,0.9,0,0],
+    max:[1,1,1,0.18,0,0]
   }
 };
+const invisibleBound = ['awake'];
 const dayBounds = {
   min: 6,
   max: 18
@@ -24,7 +29,8 @@ const getTimeBounds = (type, date) => {
 
   const [ minMap, maxMap ] = [ min, max ].map(it => (
     it.map((value, index) => {
-      const offset = (value - Math.floor(value) ) * 10;
+      const valueDecimal = value.toString().split('.').length > 1 ? value.toString().split('.')[1].length : 0;
+      const offset = (value - Math.floor(value) ) * Math.pow(10, valueDecimal);
       return Math.floor(value) * dateMapData[index] + offset;
     })
   ));
@@ -48,4 +54,4 @@ export const isNightTime = currentTime => {
   return currentHour <= min || currentHour >= max;
 };
 
-export const allBounds = Object.keys(timeBoundsMap);
+export const allBounds = Object.keys(timeBoundsMap).filter( it => !invisibleBound.includes(it));

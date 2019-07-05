@@ -1,6 +1,6 @@
 import { app, systemPreferences, ipcMain } from 'electron';
 import { createMainWindow, setMainTray } from './components';
-import { getTimeSpent, isNightTime, allBounds, allBoundsAwake, getTimeBounds } from './utils';
+import { getTimeSpent, isNightTime, allBounds, allBoundsAwake, getTimeBounds, setAwakeTimeBounds } from './utils';
 
 let mainWindow;
 let mainTray;
@@ -62,6 +62,11 @@ ipcMain.on('tray-image', (event, canvasUrl) => {
 
 ipcMain.on('bound-change', (event, { boundType: newBoundType }) => {
   boundType = newBoundType;
+  updateMyAppTheme();
+});
+
+ipcMain.on('bound-limits-change', (event, { boundLimits }) => {
+  setAwakeTimeBounds({ boundLimits });
   updateMyAppTheme();
 });
 

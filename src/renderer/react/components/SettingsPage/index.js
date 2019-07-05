@@ -12,8 +12,24 @@ const getDefaultValue = ({ hour, minutes }) => (
   moment(`${hour}:${minutes}`, format)
 );
 
+const mapBoundLimits = (value) => {
+  const [ hour, minutes ] = value && value.format(format).split(':') || [ '', '' ];
+
+  return {
+    hour,
+    minutes
+  };
+};
+
 export default function({ setShowSettingsPage, boundType, setBoundType, boundLimits, setBoundsLimits }) {
-  const onChange = () => {};
+  const onChange = (boundLimit, { hour, minutes }) => {
+    boundLimits[boundLimit] = {
+      hour,
+      minutes
+    };
+    setBoundsLimits(boundLimits);
+  };
+
   return (
     <div className="container vh-100 bg-light">
       <SettingsHeader setShowSettingsPage={setShowSettingsPage} />
@@ -39,7 +55,7 @@ export default function({ setShowSettingsPage, boundType, setBoundType, boundLim
           defaultValue={getDefaultValue(boundLimits.min)}
           showSecond={false}
           className="w-48 px-1"
-          onChange={onChange}
+          onChange={(value) => onChange('min', mapBoundLimits(value))}
           format={format}
           inputReadOnly
           disabled={boundType !== 'awake'}
@@ -49,7 +65,7 @@ export default function({ setShowSettingsPage, boundType, setBoundType, boundLim
           defaultValue={getDefaultValue(boundLimits.max)}
           showSecond={false}
           className="w-48 px-1"
-          onChange={onChange}
+          onChange={(value) => onChange('max', mapBoundLimits(value))}
           format={format}
           inputReadOnly
           disabled={boundType !== 'awake'}

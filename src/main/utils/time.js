@@ -57,3 +57,12 @@ export const isNightTime = currentTime => {
 export const allBounds = Object.keys(timeBoundsMap).filter( it => !invisibleBound.includes(it));
 
 export const allBoundsAwake = ['awake'];
+
+export const setAwakeTimeBounds = ({ boundLimits }) => {
+  const { awake } = timeBoundsMap;
+
+  Object.keys(awake).forEach(key => {
+    awake[key][3] = Number('0.' + Number(boundLimits[key].hour));
+    awake[key][4] = Number('0.' + Number(boundLimits[key].minutes));
+  });
+};

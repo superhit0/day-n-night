@@ -1,6 +1,6 @@
 import { app, systemPreferences, ipcMain } from 'electron';
 import { createMainWindow, setMainTray } from './components';
-import { getTimeSpent, isNightTime, allBounds, allBoundsAwake } from './utils';
+import { getTimeSpent, isNightTime, allBounds, allBoundsAwake, getTimeBounds } from './utils';
 
 let mainWindow;
 let mainTray;
@@ -12,11 +12,23 @@ const windowBounds = {
   height: 300
 };
 
+const mapBoundLimits = ({ min, max }) => ({
+  min: {
+    hour: min.getHours().toString().padStart(2,'0'),
+    minutes: min.getMinutes().toString().padStart(2,'0')
+  },
+  max: {
+    hour: max.getHours().toString().padStart(2,'0'),
+    minutes: max.getMinutes().toString().padStart(2,'0')
+  }
+});
+
 const updateMyAppTheme = () => {
   const isDarkMode = systemPreferences.isDarkMode();
   const currentTime = new Date();
   mainWindow.webContents.send('tray-data', {
     data: getTimeSpent(currentTime, boundType),
+    boundLimits: mapBoundLimits(getTimeBounds(boundType, currentTime)),
     darkMode: isDarkMode,
     darkTheme: isNightTime(currentTime),
     allBounds: boundType === 'awake' ? allBoundsAwake : allBounds,

@@ -16,16 +16,20 @@ export default function() {
   const [ allBounds, setAllBounds ] = useState([]);
   const [ boundType, setStateBoundType ] = useState('day');
   const [ showSettingsPage, setShowSettingsPage ] = useState(false);
+  const [ boundLimits, setStateBoundLimits ] = useState({ min: {}, max: {} });
   const setBoundType = (boundType = 'day') => {
     ipcRenderer.send('bound-change', { boundType });
   };
+  const setBoundsLimits = (boundLimits) => {
+    ipcRenderer.send('bound-limits-change', { boundLimits });
+  };
 
-  ipcRenderer.on('tray-data', (event, { data, darkTheme, allBounds, boundType }) => {
-
+  ipcRenderer.on('tray-data', (event, { data, darkTheme, allBounds, boundType, boundLimits }) => {
     setTheme(darkTheme ? 'dark' : 'light');
     setFill(Number(data) || data);
     setAllBounds(allBounds);
     setStateBoundType(boundType);
+    setStateBoundLimits(boundLimits);
   });
 
   if (showSettingsPage) {
@@ -35,7 +39,9 @@ export default function() {
         {
           ...{
             boundType,
-            setBoundType
+            setBoundType,
+            boundLimits,
+            setBoundsLimits
           }
         }
       />

@@ -23,7 +23,7 @@ const dayBounds = {
   max: 18
 };
 
-const getTimeBounds = (type, date) => {
+export const getTimeBounds = (type, date) => {
   const { min, max } = timeBoundsMap[type] || timeBoundsMap['day'];
   const dateMapData = dateMap(date);
 

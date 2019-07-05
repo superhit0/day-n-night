@@ -49,6 +49,7 @@
     "webpack": "^4.33.0"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "rc-time-picker": "^3.7.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

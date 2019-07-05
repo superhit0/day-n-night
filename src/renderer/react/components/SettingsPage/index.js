@@ -1,12 +1,18 @@
 import React from 'react';
 import TimePicker from 'rc-time-picker';
+import moment from 'moment';
 import Toggle from '../Toggle';
 import SettingsHeader from '../SettingsHeader';
 
 import 'rc-time-picker/assets/index.css';
 
-export default function({ setShowSettingsPage, boundType, setBoundType }) {
-  const format = 'H:mm';
+const format = 'HH:mm';
+
+const getDefaultValue = ({ hour, minutes }) => (
+  moment(`${hour}:${minutes}`, format)
+);
+
+export default function({ setShowSettingsPage, boundType, setBoundType, boundLimits, setBoundsLimits }) {
   const onChange = () => {};
   return (
     <div className="container vh-100 bg-light">
@@ -30,19 +36,23 @@ export default function({ setShowSettingsPage, boundType, setBoundType }) {
       </div>
       <div>
         <TimePicker
+          defaultValue={getDefaultValue(boundLimits.min)}
           showSecond={false}
           className="w-48 px-1"
           onChange={onChange}
           format={format}
           inputReadOnly
+          disabled={boundType !== 'awake'}
         />
         -
         <TimePicker
+          defaultValue={getDefaultValue(boundLimits.max)}
           showSecond={false}
           className="w-48 px-1"
           onChange={onChange}
           format={format}
           inputReadOnly
+          disabled={boundType !== 'awake'}
         />
       </div>
     </div>

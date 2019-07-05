@@ -28,7 +28,7 @@ const updateMyAppTheme = () => {
   const currentTime = new Date();
   mainWindow.webContents.send('tray-data', {
     data: getTimeSpent(currentTime, boundType),
-    boundLimits: mapBoundLimits(getTimeBounds(boundType, currentTime)),
+    boundLimits: mapBoundLimits(getTimeBounds('awake', currentTime)),
     darkMode: isDarkMode,
     darkTheme: isNightTime(currentTime),
     allBounds: boundType === 'awake' ? allBoundsAwake : allBounds,

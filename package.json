@@ -34,7 +34,11 @@
       "buildResources": "static"
     }
   },
-  "electronWebpack": {},
+  "electronWebpack": {
+    "renderer": {
+      "webpackConfig": "webpack.renderer.js"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
@@ -50,6 +54,7 @@
   },
   "dependencies": {
     "moment": "^2.24.0",
+    "moment-locales-webpack-plugin": "^1.0.7",
     "rc-time-picker": "^3.7.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

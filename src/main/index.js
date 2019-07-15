@@ -1,4 +1,4 @@
-import { app, systemPreferences, ipcMain } from 'electron';
+import { app, systemPreferences, ipcMain, Menu } from 'electron';
 import { createMainWindow, setMainTray } from './components';
 import { getTimeSpent, isNightTime, allBounds, allBoundsAwake, getTimeBounds, setAwakeTimeBounds } from './utils';
 
@@ -73,5 +73,7 @@ ipcMain.on('bound-limits-change', (event, { boundLimits }) => {
 systemPreferences.subscribeNotification(
   'AppleInterfaceThemeChangedNotification',
   updateMyAppTheme
-)
+);
+
+Menu.setApplicationMenu(null);
 
